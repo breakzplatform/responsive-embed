@@ -42,7 +42,7 @@ Install using [Bower](http://bower.io):
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`ratio`      | "16:9", "4:3", "21:9"                  | "16:9"                  | Aspect ratio of the internal content
+`ratio`      | `16:9`, `4:3`, `21:9`                  | `16:9`                  | Aspect ratio of the internal content
 
 ## Examples:
 
