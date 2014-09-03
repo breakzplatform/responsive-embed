@@ -13,7 +13,7 @@ A [Polymer](http://polymer-project.org) element for responsive embeds
 Install using [Bower](http://bower.io):
 
 ```shell
- bower install responsive-embed
+$ bower install responsive-embed --save
 ```
 
 ## Usage
@@ -21,7 +21,7 @@ Install using [Bower](http://bower.io):
 1. Import Web Components' polyfill (platform.js)
 
     ```html
-    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.1.4/platform.js"></script>
+    <script src="bower_components/platform/platform.js"></script>
     ```
 
 2. Import Custom Element:
