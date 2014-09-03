@@ -1,19 +1,19 @@
-# &lt;x-imager&gt;
+# &lt;responsive-embed&gt;
 
-A [Polymer](http://polymer-project.org) element for responsive images with [Imager.js](https://github.com/BBC-News/Imager.js/)
+A [Polymer](http://polymer-project.org) element for responsive embeds
 
-> Maintained by [Addy Osmani](https://github.com/addyosmani).
+> Maintained by [Joselito Júnior](https://github.com/joselitojunior).
 
 ## Demo
 
-> [Check it live](http://addyosmani.github.io/x-imager/index.html).
+> [Check it live](http://www.joselitojunior.com/responsive-embed/index.html).
 
 ## Installation
 
 Install using [Bower](http://bower.io):
 
 ```shell
- bower install x-imager
+ bower install responsive-embed
 ```
 
 ## Usage
@@ -27,43 +27,31 @@ Install using [Bower](http://bower.io):
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="x-imager.html">
+    <link rel="import" href="elements/responsive-embed.html">
     ```
 
 3. Start using it!
 
     ```html
-    <x-imager></x-imager>
+    <responsive-embed>
+        <!-- your media content -->
+    </responsive-embed>
     ```
 
 ## Options
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`src`      | *string*                  | ``                  | URL endpoint for images
-`widths`      | *space separated list*                  | ``                  | available image widths
-`width`      | *number*                  | ``                  | enforced size of the image placeholder
-`selector`      | *string*                  | `delayed-image-load`                  | used to locate your div placeholders
-`class`      | *string*                  | ``                  | Class name to give your resizable images
-`resize`      | *boolean*                  | `true`                  | update the src attribute of the relevant images
-`lazyload`      | *boolean*                  | `false`                  | Toggle the lazy load functionality
-`scrollDelay`      | *number*                  | ``                  | helps performance by setting a higher delay
-
+`ratio`      | "16:9", "4:3", "21:9"                  | "16:9"                  | Aspect ratio of internal content
 
 ## Examples:
 
 ```html
-<x-imager widths="200 260 320 600" src="http://placehold.it/{width}" width="340"></x-imager>
-```
-
-```html
-<x-imager widths="400 460 420 1200" src="http://placehold.it/{width}" width="500" class="img-replace" resize="false" className="imagered"></x-imager>
-```
-
-```html
-<x-imager widths="400 460 420 1200" src="http://placehold.it/{width}" width="400" class="img-replace" resize="false" className="imagered" scrollDelay="100" lazyload="true"></x-imager>
+<responsive-embed ratio="16:9">
+  <iframe src="//www.youtube.com/embed/UpuJS4LO_Ms" frameborder="0" allowfullscreen></iframe>  
+</responsive-embed>
 ```
 
 ## License
 
-[MIT License](http://opensource.org/licenses/MIT)
+[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
