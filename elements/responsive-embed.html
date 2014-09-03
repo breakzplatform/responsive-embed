@@ -12,6 +12,18 @@
     Polymer('responsive-embed', {
         ratio: "16:9",
         ready: function() {
+            switch(this.ratio) {
+                case "16:9":
+                    this.classList.add("v16-9");
+                    break;
+                case "21:9":
+                    this.classList.add("v21-9");
+                    break;
+                case "4:3":
+                    this.classList.add("v4-3");
+                    break;
+                default: this.classList.add("v16-9");
+            }
         }
     });
   </script>
