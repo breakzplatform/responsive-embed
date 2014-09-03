@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="elements/responsive-embed.html">
+    <link href='http://fonts.googleapis.com/css?family=Capriola:400' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            max-width: 720px;
+            margin: 0 auto;
+            font-family:'Capriola';
+            background: #f4f4f4;
+            color: #444;
+            padding: 0 20px;
+        }
+        
+        h1, h2 {
+            padding: 0;
+            margin: 20px 0 5px;
+        }
+        
+        h1 {
+            font-size: 3em;
+        }
+        
+        a, a:link, a:visited {
+             color: #000;   
+        }
+    </style>
+  </head>
+  <body>
+   <h1>&lt;responsive-embed&gt;</h1>
+          <iframe src="http://ghbtns.com/github-btn.html?user=mdo&repo=github-buttons&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+          <iframe src="http://ghbtns.com/github-btn.html?user=mdo&repo=github-buttons&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+          
+   <h2>A Polymer element for responsive embeds</h2>
+   <p>Add YouTube, Vimeo and other multimedia content to your pages, letting the browser calculate the height based on the width of their containing block. You just have to define the aspect ratio of the media.</p>
+   <p>It works for <code>&lt;iframes&gt;</code>, <code>&lt;object&gt;</code> and <code>&lt;embed&gt;</code> tags.</p>
+   
+   <h2>Example:</h2>
+    <responsive-embed ratio="16:9">
+        <iframe src="//www.youtube.com/embed/UpuJS4LO_Ms" frameborder="0" allowfullscreen></iframe>  
+    </responsive-embed>
+    
+    <h2>Code</h2>
+      <script src="https://gist.github.com/joselitojunior/9aa0e0cb293139b58834.js"></script>
+      
+    <p>See more on the <a href="#">repository page</a>.</p>
+  </body>
+</html>
