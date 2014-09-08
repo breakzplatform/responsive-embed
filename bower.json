@@ -1,6 +1,6 @@
 {
   "name": "responsive-embed",
-  "version": "0.1.3",
+  "version": "0.1.1",
   "homepage": "https://github.com/joselitojunior/responsive-embed",
   "authors": [
     "Joselito Júnior <eu@joselitojunior.com>"
@@ -11,7 +11,8 @@
     "polymer",
     "html5",
     "responsive",
-    "embed"
+    "embed",
+    "web-components"
   ],
   "license": "Apache 2.0",
   "ignore": [
