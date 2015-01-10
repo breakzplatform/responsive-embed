@@ -23,6 +23,10 @@
             padding-bottom: 75%;
         }
 
+        :host(.v1-1){
+            padding-bottom: 100%;
+        }
+
         polyfill-next-selector { content: 'iframe, embed, object'; }
 
         ::content iframe, ::content embed, ::content object {
@@ -53,7 +57,10 @@
                 case "4:3":
                     this.classList.add("v4-3");
                     break;
-                default: this.classList.add("v16-9");
+                case "1:1":
+                    this.classList.add("v4-3");
+                    break;
+                default: this.classList.add("v1-1");
             }
         }
     });
