@@ -2,16 +2,16 @@
   "name": "core-component-page",
   "private": true,
   "dependencies": {
-    "platform": "Polymer/platform#>=0.4.0 <1.0.0",
-    "polymer": "Polymer/polymer#>=0.4.0 <1.0.0"
+    "webcomponentsjs": "Polymer/webcomponentsjs#^0.5.0",
+    "polymer": "Polymer/polymer#^0.5.0"
   },
+  "version": "0.5.2",
   "homepage": "https://github.com/Polymer/core-component-page",
-  "version": "0.4.0",
-  "_release": "0.4.0",
+  "_release": "0.5.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.4.0",
-    "commit": "b105e85252bc3dd521601d2d73b09d150c7c2b53"
+    "tag": "0.5.2",
+    "commit": "443d8dcbcb1b203ed88c6af64c98f76e6434ba53"
   },
   "_source": "git://github.com/Polymer/core-component-page.git",
   "_target": ">=0.4.0 <1.0.0",
