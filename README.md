@@ -18,10 +18,10 @@ $ bower install responsive-embed --save
 
 ## Usage
 
-1. Import Web Components' polyfill (platform.js)
+1. Import Web Components' polyfill (webcomponents.js)
 
     ```html
-    <script src="bower_components/platform/platform.js"></script>
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
     ```
 
 2. Import Custom Element:
@@ -42,7 +42,7 @@ $ bower install responsive-embed --save
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`ratio`      | `16:9`, `4:3`, `21:9`                  | `16:9`                  | Aspect ratio of the internal content
+`ratio`      | `1:1`, `4:3`,`16:9`, `21:9`                  | `16:9`                  | Aspect ratio of the internal content
 
 ## Example:
 
