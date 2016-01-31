@@ -1,7 +1,7 @@
 {
   "name": "responsive-embed",
   "version": "1.0.0",
-  "homepage": "https://joselito.ninja/responsive-embed/",
+  "homepage": "https://github.com/joselitojunior1/responsive-embed/",
   "authors": [
     "Joselito Júnior <eu@joselitojunior.com>"
   ],
@@ -16,13 +16,15 @@
   ],
   "main": "responsive-embed.html",
   "license": "http://www.apache.org/licenses/LICENSE-2.0",
-  "homepage": "https://github.com/joselitojunior1/responsive-embed/",
   "ignore": [
     "/.*",
     "node_modules",
     "bower_components",
     "/test/",
-    "/demo/"
+    "/demo/",
+    "**/.*",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0"

@@ -13,7 +13,7 @@ A [Polymer](http://polymer-project.org) element for responsive embeds
 Install using [Bower](http://bower.io):
 
 ```shell
-$ bower i joselitojunior1/responsive-embed -S
+$ bower i responsive-embed -S
 ```
 
 ## Usage
