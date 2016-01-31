@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>responsive-embed @ joselitojunior1</title>
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../responsive-embed.html">
+  <style>
+    .container {
+      max-width: 52rem;
+      margin: 0 auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", sans-serif;
+    }
+
+    responsive-embed {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <p>An example of
+      <code>&lt;responsive-embed&gt;</code>:</p>
+
+    <button data-ratio="21:9">Set 21:9</button>
+    <button data-ratio="16:9">Set 16:9</button>
+    <button data-ratio="4:3">Set 4:3</button>
+    <button data-ratio="1:1">Set 1:1</button>
+
+    <responsive-embed>
+      <iframe src="https://www.youtube.com/embed/fCLMI5TCcqg" frameborder="0" allowfullscreen></iframe>
+    </responsive-embed>
+
+    <script>
+      var btn = document.querySelectorAll('button');
+      for (var i = 0; i < btn.length; i++) {
+        btn[i].addEventListener('click', function() {
+          document.querySelector('responsive-embed').changeRatio(this.dataset.ratio);
+        });
+      }
+    </script>
+  </div>
+</body>
+
+</html>
