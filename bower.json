@@ -1,0 +1,34 @@
+{
+  "name": "responsive-embed",
+  "version": "1.0.0",
+  "homepage": "https://joselito.ninja/responsive-embed/",
+  "authors": [
+    "Joselito Júnior <eu@joselitojunior.com>"
+  ],
+  "description": "An element for responsive embeds.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "responsive",
+    "embed",
+    "media"
+  ],
+  "main": "responsive-embed.html",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "homepage": "https://github.com/joselitojunior1/responsive-embed/",
+  "ignore": [
+    "/.*",
+    "node_modules",
+    "bower_components",
+    "/test/",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}

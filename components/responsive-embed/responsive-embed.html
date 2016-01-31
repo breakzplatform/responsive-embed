@@ -1,0 +1,135 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+An element for responsive embeds.
+
+Add YouTube, Vimeo and other multimedia content to your pages, letting the browser calculate the height based on the width of their containing block. You just have to define the aspect ratio of the media.
+It works for <code>&lt;iframe&gt;</code>, <code>&lt;object&gt;</code> and <code>&lt;embed&gt;</code> tags.
+
+Example:
+
+    <responsive-embed>
+      <iframe src="https://www.youtube.com/embed/fCLMI5TCcqg" frameborder="0" allowfullscreen></iframe>
+    </responsive-embed>
+
+@demo
+-->
+<dom-module id="responsive-embed">
+
+  <style>
+    :host {
+      position: relative;
+      display: block;
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    :host(.v16-9) {
+      padding-bottom: 56.25%;
+    }
+
+    :host(.v21-9) {
+      padding-bottom: 42.85714%;
+    }
+
+    :host(.v4-3) {
+      padding-bottom: 75%;
+    }
+
+    :host(.v1-1) {
+      padding-bottom: 100%;
+    }
+
+    polyfill-next-selector {
+      content: 'iframe, embed, object';
+    }
+
+    ::content iframe,
+    ::content embed,
+    ::content object {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+
+  <template>
+    <content select="iframe"></content>
+    <content select="embed"></content>
+    <content select="object"></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+
+    is: 'responsive-embed',
+
+    properties: {
+      /**
+       * Aspect ratio of the internal content. Options: `1:1,4:3,16:9,21:9`
+       *
+       * @type String
+       */
+      ratio: {
+        type: String,
+        value: function(){
+          return "16:9";
+        }
+      },
+
+    },
+
+    ready: function() {
+      switch (this.ratio) {
+        case "16:9":
+          this.classList.add("v16-9");
+          break;
+        case "21:9":
+          this.classList.add("v21-9");
+          break;
+        case "4:3":
+          this.classList.add("v4-3");
+          break;
+        case "1:1":
+          this.classList.add("v1-1");
+          break;
+        default:
+          this.classList.add("v16-9");
+      }
+    },
+
+    /*
+     * Defines the aspect ratio of a compnent.
+     *
+     * @param {string} ratio.
+     */
+    changeRatio: function(ratio) {
+      this.className = "";
+      switch (ratio) {
+        case "16:9":
+          this.classList.add("v16-9");
+          break;
+        case "21:9":
+          this.classList.add("v21-9");
+          break;
+        case "4:3":
+          this.classList.add("v4-3");
+          break;
+        case "1:1":
+          this.classList.add("v1-1");
+          break;
+        default:
+          this.classList.add("v16-9");
+      }
+    }
+
+
+  });
+</script>
