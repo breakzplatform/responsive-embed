@@ -6,7 +6,7 @@ A [Polymer](http://polymer-project.org) element for responsive embeds
 
 ## Demo
 
-> [Check it live](http://joselito.ninja/responsive-embed/).
+> [Check it live](https://joselito.ninja/responsive-embed/).
 
 ## Installation
 
