@@ -26,13 +26,13 @@ $ npm i responsive-embed
 1. Import Web Components' polyfill (webcomponents.js)
 
     ```html
-    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <script src=".../webcomponentsjs/webcomponents.js"></script>
     ```
 
 2. Import Custom Element:
 
     ```html
-    <link rel="import" href="responsive-embed.html">
+    <link rel="import" href=".../responsive-embed.html">
     ```
 
 3. Start using it!
