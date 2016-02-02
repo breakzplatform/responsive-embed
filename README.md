@@ -16,6 +16,11 @@ Install using [Bower](http://bower.io):
 $ bower i responsive-embed -S
 ```
 
+or via [NPM](http://npmjs.com)
+```shell
+$ npm i responsive-embed
+```
+
 ## Usage
 
 1. Import Web Components' polyfill (webcomponents.js)

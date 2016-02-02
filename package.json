@@ -1,0 +1,40 @@
+{
+  "name": "responsive-embed",
+  "version": "1.0.0",
+  "description": "A Polymer element for responsive embeds",
+  "main": "index.html",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "polyserve",
+    "test": "wct -l chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joselitojunior1/responsive-embed.git"
+  },
+  "keywords": [
+    "web",
+    "component",
+    "shadow",
+    "dom",
+    "template",
+    "polymer",
+    "responsive",
+    "media",
+    "web-component",
+    "web-components"
+  ],
+  "author": "Joselito Junior <eu@joselitojunior.com> (http://joselito.ninja)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/joselitojunior1/responsive-embed/issues"
+  },
+  "homepage": "https://github.com/joselitojunior1/responsive-embed",
+  "devDependencies": {
+    "polyserve": "^0.5.0",
+    "bower": "^1.7.7",
+    "web-component-tester": "^4.2.0"
+  }
+}
