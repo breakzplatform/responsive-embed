@@ -16,7 +16,7 @@ Install using [Bower](http://bower.io):
 $ bower i responsive-embed -S
 ```
 
-or via [NPM](http://npmjs.com)
+or via [NPM](http://npmjs.com):
 ```shell
 $ npm i responsive-embed
 ```
