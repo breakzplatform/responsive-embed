@@ -2,6 +2,8 @@
  * <responsive-embed> keeps its content (an iframe, video, object, embed or
  * anything else) at a fixed aspect ratio while the width follows the layout.
  *
+ * This module only exports the class. Import `responsive-embed` (index.js) to
+ * also register the `<responsive-embed>` tag.
  */
 
 export const DEFAULT_RATIO = 16 / 9;
@@ -82,6 +84,22 @@ const Base = globalThis.HTMLElement ?? class {};
 
 export class ResponsiveEmbed extends Base {
   static observedAttributes = ['ratio'];
+
+  /**
+   * Registers the element, unless the name is already taken. Custom element
+   * names are global, so defining the same name twice throws; this makes a
+   * second copy of the package on the page harmless.
+   *
+   * @param {string} [tagName]
+   * @param {CustomElementRegistry} [registry]
+   * @returns {CustomElementConstructor} the constructor registered under the name.
+   */
+  static define(tagName = 'responsive-embed', registry = globalThis.customElements) {
+    const existing = registry.get(tagName);
+    if (existing) return existing;
+    registry.define(tagName, this);
+    return this;
+  }
 
   static #sheet;
 
