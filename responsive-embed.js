@@ -74,6 +74,7 @@ const STYLES = `
     inset: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
     border: 0;
   }
 `;
@@ -135,7 +136,10 @@ export class ResponsiveEmbed extends Base {
     this.#observer.disconnect();
   }
 
-  attributeChangedCallback() {
+  attributeChangedCallback(name, oldValue, newValue) {
+    // setAttribute() with the value already there still lands here; skip it
+    // so repeated writes of an invalid ratio do not warn again.
+    if (oldValue === newValue) return;
     this.#update(true);
   }
 

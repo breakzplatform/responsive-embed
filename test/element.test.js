@@ -125,6 +125,13 @@ describe('<responsive-embed>', () => {
       expect(warnings).to.have.length(1);
     });
 
+    it('warns only once when the same invalid value is set again', () => {
+      const el = mount('<responsive-embed ratio="wide"><iframe></iframe></responsive-embed>');
+      el.setAttribute('ratio', 'wide');
+      el.setAttribute('ratio', 'wide');
+      expect(warnings).to.have.length(1);
+    });
+
     it('treats an empty attribute as absent, without warning', () => {
       const el = mount('<responsive-embed ratio=""><iframe width="1" height="1"></iframe></responsive-embed>');
       expect(el.aspectRatio).to.equal(1);
@@ -189,6 +196,8 @@ describe('<responsive-embed>', () => {
       embed: `<embed type="image/svg+xml" src='${svg}'>`,
       img: `<img alt="" src='${svg}'>`,
       div: '<div></div>',
+      figure: '<figure></figure>',
+      p: '<p></p>',
     };
     for (const [tag, html] of Object.entries(children)) {
       it(`stretches <${tag}> to fill the box`, () => {
