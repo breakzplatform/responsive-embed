@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>responsive-embed demo</title>
+  <meta name="description" content="Demo of the <responsive-embed> custom element.">
+  <script type="module" src="../index.js"></script>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --fg: #1b1b1b;
+      --muted: #666;
+      --accent: #2856d9;
+      --border: #ddd;
+      --code-bg: #eee;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141414;
+        --fg: #eaeaea;
+        --muted: #9a9a9a;
+        --accent: #7fa2ff;
+        --border: #333;
+        --code-bg: #222;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    main {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    h1 { margin-bottom: 0.25rem; }
+    h2 { margin-top: 3rem; }
+    p.lead { color: var(--muted); margin-top: 0; }
+    a { color: var(--accent); }
+    code, pre {
+      font: 0.9em/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: var(--code-bg);
+      border-radius: 4px;
+    }
+    code { padding: 0.1em 0.3em; }
+    pre { padding: 0.75rem 1rem; overflow-x: auto; }
+    responsive-embed {
+      margin: 1rem 0;
+      background: var(--code-bg);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    button, input {
+      font: inherit;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    button { cursor: pointer; }
+    input { width: 8rem; }
+    output { color: var(--muted); }
+    .fill {
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #2856d9, #9b3fd6);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>&lt;responsive-embed&gt;</h1>
+    <p class="lead">Keeps embeds at a fixed aspect ratio. <a href="https://github.com/breakzplatform/responsive-embed">Source and docs</a>.</p>
+
+    <h2>Inferred from the embed code</h2>
+    <p>No <code>ratio</code> attribute: the YouTube snippet's <code>width="560" height="315"</code> gives 16:9.</p>
+    <pre><code>&lt;responsive-embed&gt;
+  &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/fCLMI5TCcqg" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/responsive-embed&gt;</code></pre>
+    <responsive-embed>
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fCLMI5TCcqg" title="YouTube video" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    </responsive-embed>
+
+    <h2>Explicit and reactive ratio</h2>
+    <div class="controls" id="controls">
+      <button data-ratio="21:9">21:9</button>
+      <button data-ratio="16:9">16:9</button>
+      <button data-ratio="4/3">4/3</button>
+      <button data-ratio="1">1</button>
+      <button data-ratio="2.35">2.35</button>
+      <label>or type one <input id="custom" value="3:2" aria-label="Custom ratio"></label>
+      <output id="current"></output>
+    </div>
+    <responsive-embed id="reactive" ratio="16:9">
+      <div class="fill" id="label">16:9</div>
+    </responsive-embed>
+    <p>An invalid value (try <code>16x9</code>) logs a warning in the console and falls back to 16:9.</p>
+
+    <h2>Any content</h2>
+    <p>A <code>&lt;video&gt;</code> with its own dimensions:</p>
+    <responsive-embed>
+      <video width="640" height="360" controls preload="metadata" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"></video>
+    </responsive-embed>
+  </main>
+
+  <script type="module">
+    await customElements.whenDefined('responsive-embed');
+    const embed = document.getElementById('reactive');
+    const label = document.getElementById('label');
+    const current = document.getElementById('current');
+    const custom = document.getElementById('custom');
+
+    function show() {
+      label.textContent = embed.ratio;
+      current.value = `applied: ${embed.aspectRatio.toFixed(3)}`;
+    }
+
+    document.getElementById('controls').addEventListener('click', (event) => {
+      const ratio = event.target.dataset?.ratio;
+      if (!ratio) return;
+      embed.ratio = ratio;
+      show();
+    });
+    custom.addEventListener('change', () => {
+      embed.ratio = custom.value;
+      show();
+    });
+    show();
+  </script>
+</body>
+</html>
