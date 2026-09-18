@@ -1,40 +1,59 @@
 {
   "name": "responsive-embed",
-  "version": "1.0.0",
-  "description": "A Polymer element for responsive embeds",
-  "main": "index.html",
-  "directories": {
-    "test": "test"
+  "version": "2.0.0",
+  "description": "A tiny custom element that keeps iframes, videos and other embeds at a fixed aspect ratio.",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./responsive-embed.js": {
+      "types": "./responsive-embed.d.ts",
+      "default": "./responsive-embed.js"
+    },
+    "./package.json": "./package.json"
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "responsive-embed.js",
+    "responsive-embed.d.ts"
+  ],
+  "sideEffects": [
+    "./index.js"
+  ],
   "scripts": {
-    "start": "polyserve",
-    "test": "wct -l chrome"
+    "test": "wtr",
+    "start": "wds --open demo/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joselitojunior1/responsive-embed.git"
+    "url": "git+https://github.com/breakzplatform/responsive-embed.git"
   },
-  "keywords": [
-    "web",
-    "component",
-    "shadow",
-    "dom",
-    "template",
-    "polymer",
-    "responsive",
-    "media",
-    "web-component",
-    "web-components"
-  ],
-  "author": "Joselito Junior <eu@joselitojunior.com> (http://joselito.ninja)",
-  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/joselitojunior1/responsive-embed/issues"
+    "url": "https://github.com/breakzplatform/responsive-embed/issues"
   },
-  "homepage": "https://github.com/joselitojunior1/responsive-embed",
+  "homepage": "https://breakzplatform.github.io/responsive-embed/demo/",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "custom-element",
+    "responsive",
+    "embed",
+    "iframe",
+    "video",
+    "aspect-ratio"
+  ],
+  "author": "Joselito <eu@joseli.to>",
+  "license": "Apache-2.0",
   "devDependencies": {
-    "polyserve": "^0.5.0",
-    "bower": "^1.7.7",
-    "web-component-tester": "^4.2.0"
+    "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@web/dev-server": "^1.0.0",
+    "@web/test-runner": "^1.0.0",
+    "@web/test-runner-commands": "^1.0.1"
   }
 }
