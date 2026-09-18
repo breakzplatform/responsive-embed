@@ -10,6 +10,7 @@ const NUMBER = String.raw`\d+(?:\.\d+)?|\.\d+`;
 const RATIO_PATTERN = new RegExp(
   String.raw`^\s*(${NUMBER})\s*(?:[:/]\s*(${NUMBER})\s*)?$`,
 );
+const DIMENSION_PATTERN = new RegExp(String.raw`^\s*(${NUMBER})\s*(?:px)?\s*$`);
 
 /**
  * Parses an aspect ratio written as `16:9`, `4/3`, `2.35` or `1`.
@@ -25,6 +26,37 @@ export function parseRatio(value) {
   const height = match[2] === undefined ? 1 : Number(match[2]);
   const ratio = width / height;
   return Number.isFinite(ratio) && ratio > 0 ? ratio : null;
+}
+
+/**
+ * Reads a numeric `width` or `height` attribute (`560`, `315px`).
+ * Percentages and other units are ignored.
+ *
+ * @param {Element} element
+ * @param {'width' | 'height'} name
+ * @returns {number | null}
+ */
+function readDimension(element, name) {
+  const match = DIMENSION_PATTERN.exec(element.getAttribute(name) ?? '');
+  const value = match ? Number(match[1]) : NaN;
+  return value > 0 && Number.isFinite(value) ? value : null;
+}
+
+/**
+ * Infers the ratio from the first child element that declares both a numeric
+ * `width` and `height`, like the snippets YouTube and Vimeo hand out.
+ *
+ * @param {Element} host
+ * @returns {number | null}
+ */
+export function inferRatio(host) {
+  for (const child of host.children) {
+    if (child.hasAttribute('slot')) continue;
+    const width = readDimension(child, 'width');
+    const height = readDimension(child, 'height');
+    if (width && height) return width / height;
+  }
+  return null;
 }
 
 const STYLES = `
@@ -55,6 +87,7 @@ export class ResponsiveEmbed extends Base {
 
   #ratio = null;
   #ratioSheet = new CSSStyleSheet();
+  #observer = new MutationObserver(() => this.#update());
 
   constructor() {
     super();
@@ -71,7 +104,17 @@ export class ResponsiveEmbed extends Base {
   }
 
   connectedCallback() {
+    this.#observer.observe(this, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['width', 'height', 'slot'],
+    });
     this.#update();
+  }
+
+  disconnectedCallback() {
+    this.#observer.disconnect();
   }
 
   attributeChangedCallback() {
@@ -103,13 +146,13 @@ export class ResponsiveEmbed extends Base {
         console.warn(
           `<${this.localName}>: invalid ratio "${attribute}". ` +
             'Use a value like "16:9", "4/3" or "2.35". ' +
-            'Falling back to 16:9.',
+            'Falling back to the width/height of the content, or 16:9.',
           this,
         );
       }
     }
 
-    ratio ??= DEFAULT_RATIO;
+    ratio ??= inferRatio(this) ?? DEFAULT_RATIO;
     if (ratio === this.#ratio) return;
     this.#ratio = ratio;
     this.#ratioSheet.replaceSync(`:host { aspect-ratio: ${ratio}; }`);
