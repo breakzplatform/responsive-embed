@@ -1,0 +1,37 @@
+name: publish
+
+# Publishes to npm when a GitHub release is published. Authentication uses
+# npm trusted publishing (OIDC), which also attaches a provenance statement,
+# so no npm token is stored in the repository. Configure the trusted
+# publisher on npmjs.com before the first run.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          registry-url: https://registry.npmjs.org
+      - name: Check that the tag matches package.json
+        if: github.event_name == 'release'
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          tag="${GITHUB_REF_NAME#v}"
+          if [ "$tag" != "$version" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+      - run: npm ci
+      - run: npm publish --provenance --access public
