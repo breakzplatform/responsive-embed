@@ -21,14 +21,16 @@
     "index.js",
     "index.d.ts",
     "responsive-embed.js",
-    "responsive-embed.d.ts"
+    "responsive-embed.d.ts",
+    "CHANGELOG.md"
   ],
   "sideEffects": [
     "./index.js"
   ],
   "scripts": {
     "test": "wtr",
-    "start": "wds --open demo/"
+    "start": "wds --open demo/",
+    "prepublishOnly": "npm test"
   },
   "repository": {
     "type": "git",
