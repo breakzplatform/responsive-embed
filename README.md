@@ -178,6 +178,8 @@ current browser supports.
 - An unknown ratio now logs a warning instead of silently becoming 16:9.
 - Any child element is sized, not only `iframe`, `object` and `embed`.
 
+The full list of changes is in the [changelog](CHANGELOG.md).
+
 ## Development
 
 ```shell
