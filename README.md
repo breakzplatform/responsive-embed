@@ -12,7 +12,7 @@ embed at a fixed aspect ratio while its width follows the layout.
 Paste the embed code you were given, wrap it, done. The ratio comes from the
 `width` and `height` the snippet already has.
 
-[Demo](https://responsive-embed.joselito.dev/demo/)
+[Demo](https://responsive-embed.joselito.dev/)
 
 ## When not to use this
 
