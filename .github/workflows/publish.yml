@@ -1,9 +1,10 @@
 name: publish
 
-# Publishes to npm when a GitHub release is published. Authentication uses
-# npm trusted publishing (OIDC), which also attaches a provenance statement,
-# so no npm token is stored in the repository. Configure the trusted
-# publisher on npmjs.com before the first run.
+# Stages the package on npm when a GitHub release is published; a maintainer
+# then approves it on npmjs.com with 2FA before it goes live. Authentication
+# uses npm trusted publishing (OIDC), which also attaches a provenance
+# statement, so no npm token is stored in the repository. The trusted
+# publisher on npmjs.com only allows `npm stage publish`.
 
 on:
   release:
@@ -33,5 +34,7 @@ jobs:
             echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
             exit 1
           fi
+      - name: Use an npm with staged publishing
+        run: npm install -g npm@^11.15.0
       - run: npm ci
-      - run: npm publish --provenance --access public
+      - run: npm stage publish --provenance --access public
