@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project
 uses [Semantic Versioning](https://semver.org/).
 
+## [2.0.1] - 2026-10-08
+
+### Changed
+
+- The package homepage on npm now points to the demo at
+  https://responsive-embed.joselito.dev/. No code changes.
+
 ## [2.0.0] - 2026-10-08
 
 A rewrite from scratch. 1.x was a Polymer 1 element loaded through HTML
@@ -56,5 +63,6 @@ custom element in a single ES module, with no dependencies and no build step.
 
 - Migrated to Polymer 1.0 and published to npm.
 
+[2.0.1]: https://github.com/breakzplatform/responsive-embed/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/breakzplatform/responsive-embed/compare/1.0.0...v2.0.0
 [1.0.0]: https://github.com/breakzplatform/responsive-embed/releases/tag/1.0.0

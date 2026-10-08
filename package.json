@@ -1,6 +1,6 @@
 {
   "name": "responsive-embed",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A tiny custom element that keeps iframes, videos and other embeds at a fixed aspect ratio.",
   "type": "module",
   "main": "./index.js",
